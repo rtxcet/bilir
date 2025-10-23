@@ -3,63 +3,99 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="~/assets/img/favicon.ico" type="image/x-icon" />
-    <!-- Font Icons css -->
-    <link rel="stylesheet" href="~/assets/css/font-icons.css" asp-append-version="true">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true">
+    <link rel="shortcut icon" href="~/uploads/fav/fav.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8" />
-    <meta http-equiv="content-type" content="text/html;charset=iso-8859-9">
-    <meta http-equiv="content-type" content="text/html;charset=windows-1254">
-    <meta http-equiv="content-type" content="text/html;charset=x-mac-turkish">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true">
 
     <!-- SEO Meta Tags -->
-    <title>@Model?.Name - Medikal Malzemeler</title>
-    <meta name="description" content="@Model?.SiteMetaDescription">
-    <meta name="keywords" content="@Model?.SiteMetaKeyword">
-    <meta name="author" content="@Model?.Name - Medikal Malzemeler">
-
-
+    <title>Bilir Teknoloji | Teknolojiyi Bilen, Güveni İnşa Eden, Kalıcı Çözümler</title>
 </head>
 <body>
+    <div class="top-banner">
+        <div class="marquee" id="bannerText">
+            🚀 Bilir Teknoloji – Yazılımda güvenin adresi! | Kampanyalarımız başladı!
+        </div>
+    </div>
+  
+
     <header>
-        @await Component.InvokeAsync("Header")
+        <div class="container">
+            <div class="top-bar">
+                <div class="logo">Bilir Teknoloji</div>
+
+                <div class="contact-info">
+                    <a href="tel:05340219815" class="phone-number d-none d-md-inline">
+                        <i class="fas fa-phone-alt "></i>
+                        0534 021 98 15
+                    </a>
+
+
+                    <div class="mobil-navbar ">
+                        <button class="btn btn-outline-secondary" data-bs-toggle="offcanvas"
+                                data-bs-target="#mobileMenu">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="search-box">
+                    <form method="get" action="/products/search" class="d-flex" style="width: 100%;">
+                        <input type="text" name="q" placeholder="Aradığınız ürünü yazınız..." class="form-control me-2" />
+                        <button type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Mobil Sidebar -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+            <div class="offcanvas-header">
+                <a href="/" class="logo">Bilir Teknoloji</a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/" class="text-decoration-none active">Ana Sayfa</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
     </header>
 
-    <main style="margin-top: 140px;">
+
+
+    <main>
         @RenderBody()
     </main>
 
 
-    <!-- container olmadan direkt body içine koy -->
-    <div class="floating-buttons-left">
-        <a href="https://wa.me/905340219815" target="_blank" class="circle-btn whatsapp">
-            <i class="fab fa-whatsapp" style="font-size: 20px;"></i>
-        </a>
-        <a href="tel:02122460098" class="circle-btn phone">
-            <i class="fas fa-phone" style="font-size: 20px;"></i>
-        </a>
-    </div>
+    <a href="tel:+Model.Phone" class="floating-icon phone-icon">
+        <i class="fas fa-phone-alt"></i>
+    </a>
 
-    <div class="floating-buttons-right">
-        <a href="#" id="backToTopBtn" class="circle-btn back-to-top" title="Yukarı Çık">
-            <i class="fa-solid fa-chevron-up" style="font-size: 20px;"></i>
-        </a>
-    </div>
+    <a href="https://wa.me/Model.WhattsapPhone" target="_blank" class="floating-icon whatsapp-icon">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    @await Component.InvokeAsync("Footer")
 
-    <!-- All JS Plugins -->
-    <script src="~/assets/js/" asp-append-version="true"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <script src="~/assets/js/headSlider.js" asp-append-version="true"></script>
     <!-- Main JS -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>

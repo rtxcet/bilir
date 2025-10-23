@@ -1,0 +1,121 @@
+﻿<section class="populer-section mt-4" id="populer-electronics">
+    <div class="container">
+        <div class="populer-header d-flex justify-content-between align-items-center">
+            <span class="card-title ">Kamera Sistemleri</span>
+            <div class="populer-buttons">
+                <button class="slider-btn left" data-target="electronics">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn right" data-target="electronics">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-slider mt-3 overflow-auto d-flex gap-3" id="slider-electronics">
+            <a href="/Default/Detail/1" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Laptop">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Laptop</h5>
+                </div>
+            </a>
+            <a href="/Default/Detail/2" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Smartphone">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Smartphone</h5>
+                </div>
+            </a>
+            <a href="/Default/Detail/2" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Smartphone">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Smartphone</h5>
+                </div>
+            </a>
+                 <a href="/Default/Detail/1" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Laptop">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Laptop</h5>
+                </div>
+            </a>
+            <a href="/Default/Detail/2" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Smartphone">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Smartphone</h5>
+                </div>
+            </a>
+            <a href="/Default/Detail/2" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Smartphone">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Smartphone</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="populer-section mt-4" id="populer-books">
+    <div class="container">
+        <div class="populer-header d-flex justify-content-between align-items-center">
+            <span class="card-title ">Elektronik Ürünler</span>
+            <div class="populer-buttons">
+                <button class="slider-btn left" data-target="books">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn right" data-target="books">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-slider mt-3 overflow-auto d-flex gap-3" id="slider-books">
+            <a href="/Default/Detail/3" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Book A">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Book A</h5>
+                </div>
+            </a>
+            <a href="/Default/Detail/4" class="card">
+                <img src="~/uploads/product/1.jpg" class="card-img-top" alt="Book B">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Book B</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const scrollAmount = 300;
+
+        const leftButtons = document.querySelectorAll(".slider-btn.left");
+        const rightButtons = document.querySelectorAll(".slider-btn.right");
+
+        leftButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+                const target = btn.getAttribute("data-target");
+                const slider = document.querySelector(`#slider-${target}`);
+                if (slider) {
+                    slider.scrollBy({
+                        left: -scrollAmount,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        rightButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+                const target = btn.getAttribute("data-target");
+                const slider = document.querySelector(`#slider-${target}`);
+                if (slider) {
+                    slider.scrollBy({
+                        left: scrollAmount,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    });
+</script>
