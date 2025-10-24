@@ -1,0 +1,150 @@
+﻿@model Home
+
+<div class="container">
+ 
+    <div class="col-lg-12 col-xl-12 shadow my-4">
+
+        @if (ViewBag.Message != null)
+        {
+            <div id="successMessage" class="alert alert-success alert-dismissible fade show shadow-sm fw-semibold" role="alert">
+                <i class="fas fa-check-circle me-2"></i>
+                @ViewBag.Message
+            </div>
+        }
+
+        <div class="card-header bg-primary text-white py-3 d-flex justify-content-between align-items-center mb-2">
+            <h6>Ana Sayfa Ayarları</h6>
+        </div>
+        <div class="card border-0 px-2">
+            <form method="post" enctype="multipart/form-data">
+
+                <!-- Başlık -->
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-semibold">Başlık</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <!-- Açıklama -->
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-semibold">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- WhatsApp Numarası -->
+                <div class="mb-3">
+                    <label asp-for="WhattsapPhone" class="form-label fw-semibold">WhatsApp Numarası</label>
+                    <input asp-for="WhattsapPhone" class="form-control" />
+                    <span asp-validation-for="WhattsapPhone" class="text-danger"></span>
+                </div>
+
+                <!-- Telefon -->
+                <div class="mb-3">
+                    <label asp-for="Phone" class="form-label fw-semibold">Telefon Numarası</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <!-- E-posta -->
+                <div class="mb-3">
+                    <label asp-for="Mail" class="form-label fw-semibold">E-posta</label>
+                    <input asp-for="Mail" class="form-control" />
+                    <span asp-validation-for="Mail" class="text-danger"></span>
+                </div>
+
+                <!-- Adres -->
+                <div class="mb-3">
+                    <label asp-for="Adress" class="form-label fw-semibold">Adres</label>
+                    <input asp-for="Adress" class="form-control" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
+                </div>
+
+                <!-- Google Maps -->
+                <div class="mb-3">
+                    <label asp-for="Maps" class="form-label fw-semibold">Google Maps Linki</label>
+                    <input asp-for="Maps" class="form-control" />
+                    <span asp-validation-for="Maps" class="text-danger"></span>
+                </div>
+
+                <!-- Görsel Yükleme -->
+                <div class="mb-4">
+                    <label asp-for="ImageFile" class="form-label fw-semibold">Görsel Yükle</label>
+                    <input asp-for="ImageFile" type="file" class="form-control form-control-lg" accept="image/*" id="imageInput" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+
+                    <!-- 📸 Mevcut Görsel Önizleme (Bonus) -->
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mt-3 text-center">
+                            <img src="@Model.ImageUrl"
+                                 alt="Mevcut Görsel"
+                                 class="img-thumbnail rounded shadow-sm"
+                                 style="max-width: 200px; max-height: 200px; object-fit: cover;" />
+                            <p class="mt-2 text-muted">Yüklü Görsel</p>
+                        </div>
+                    }
+
+                    <!-- Yeni Görsel Önizleme -->
+                    <div class="mt-3 text-center" id="previewContainer" style="display:none;">
+                        <img id="previewImage" src="#" alt="Önizleme" class="img-thumbnail rounded shadow-sm"
+                             style="max-width: 200px; max-height: 200px; object-fit: cover;" />
+                    </div>
+                </div>
+
+                <!-- Google Tag -->
+                <div class="mb-3">
+                    <label asp-for="GoogleTag" class="form-label fw-semibold">Google Tag</label>
+                    <input asp-for="GoogleTag" class="form-control" />
+                    <span asp-validation-for="GoogleTag" class="text-danger"></span>
+                </div>
+
+                <!-- Kaydet ve Geri Butonları -->
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end my-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                        <i class="fas fa-save me-2"></i>Kaydet
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg">Geri</a>
+                </div>
+            </form>
+        </div>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+            <script>
+                // Görsel seçildiğinde anında önizleme göster
+                const imageInput = document.getElementById("imageInput");
+                const previewImage = document.getElementById("previewImage");
+                const previewContainer = document.getElementById("previewContainer");
+
+                imageInput.addEventListener("change", function (e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function (event) {
+                            previewImage.src = event.target.result;
+                            previewContainer.style.display = "block";
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            </script>
+
+            <script>
+                // Başarı mesajını 7 saniye sonra kaybolacak şekilde animasyonlu gizle
+                window.addEventListener('DOMContentLoaded', () => {
+                    const successMessage = document.getElementById('successMessage');
+                    if (successMessage) {
+                        setTimeout(() => {
+                            successMessage.classList.remove('show'); // fade out için
+                            successMessage.classList.add('fade');    // animasyon
+                            setTimeout(() => {
+                                successMessage.remove(); // DOM'dan kaldır
+                            }, 500); // fade-out süresi (ms)
+                        }, 7000); // 7 saniye bekleme süresi
+                    }
+                });
+            </script>
+        }
+    </div>
+</div>

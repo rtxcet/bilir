@@ -1,24 +1,17 @@
-﻿const messages = [
-    "🚀 Bilir Teknoloji – Yazılımda güvenin adresi! | Kampanyalarımız başladı!",
-    "💻 Bilir 2 Teknoloji – Dijital çözümlerle geleceği yazıyoruz!",
-    "🌐 Web ve yazılım çözümlerinde lideriz!"
-];
-
+﻿const marquee = document.getElementById("bannerText");
+const messages = marquee.querySelectorAll("p");
 let index = 0;
-const marquee = document.getElementById("bannerText");
 
-// Animasyon her tur tamamlandığında yazıyı değiştir
 marquee.addEventListener("animationiteration", () => {
+    messages[index].classList.remove("active");
     index = (index + 1) % messages.length;
-    marquee.textContent = messages[index];
+    messages[index].classList.add("active");
 });
 
-// Fare üstüne gelince durdur
 marquee.addEventListener("mouseenter", () => {
     marquee.style.animationPlayState = "paused";
 });
 
-// Fare ayrılınca devam et
 marquee.addEventListener("mouseleave", () => {
     marquee.style.animationPlayState = "running";
 });

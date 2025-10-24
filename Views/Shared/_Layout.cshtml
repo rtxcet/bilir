@@ -17,19 +17,19 @@
     <title>Bilir Teknoloji | Teknolojiyi Bilen, Güveni İnşa Eden, Kalıcı Çözümler</title>
 </head>
 <body>
-    <div class="top-banner">
-        <div class="marquee" id="bannerText">
-            🚀 Bilir Teknoloji – Yazılımda güvenin adresi! | Kampanyalarımız başladı!
-        </div>
-    </div>
-  
+
+    @await Component.InvokeAsync("Slogan")
 
     <header>
         <div class="container">
             <div class="top-bar">
-                <div class="logo">Bilir Teknoloji</div>
+                <div class="logo">Bilir Teknoloji <img src="~/uploads/fav/fav.png" height="40" width="40" /></div>
+              
 
                 <div class="contact-info">
+                    
+
+
                     <a href="tel:05340219815" class="phone-number d-none d-md-inline">
                         <i class="fas fa-phone-alt "></i>
                         0534 021 98 15
@@ -94,7 +94,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-   
+
     <script src="~/assets/js/headSlider.js" asp-append-version="true"></script>
     <!-- Main JS -->
     @await RenderSectionAsync("Scripts", required: false)

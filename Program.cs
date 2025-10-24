@@ -1,4 +1,12 @@
+using bilir;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Veritaban? ba?lant?s?n? yap?land?r?yoruz
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 26)))); // MySQL versiyonunu do?ru belirtin
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -19,6 +27,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

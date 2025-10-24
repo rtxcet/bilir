@@ -44,7 +44,16 @@ a {
     cursor: pointer;
 }
 
-/* Soldan sağa, tamamen ekran dışına çıkan düzgün animasyon */
+    .marquee p {
+        display: none;
+        margin: 0;
+        padding: 0 10px;
+    }
+
+        .marquee p.active {
+            display: inline-block;
+        }
+
 @keyframes scrollRight {
     0% {
         transform: translateX(-100%);
@@ -54,7 +63,6 @@ a {
         transform: translateX(100vw);
     }
 }
-
 header {
     background-color: #f8f9fa;
     width: 100%;

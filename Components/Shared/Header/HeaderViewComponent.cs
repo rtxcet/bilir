@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace bilir.Components
+namespace bilir.Components.Shared.Header
 {
-    public class FooterViewComponent : ViewComponent
+    public class HeaderViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
