@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using bilir.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace bilir.Components.Default
 {
     public class ContactMapViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()
+        public IViewComponentResult Invoke()
         {
-            return View();
+            var model = new Contact(); // Boş form modeli
+            return View(model);        // Form sayfasına bu modeli gönderiyoruz
         }
     }
 }

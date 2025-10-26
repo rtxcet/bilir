@@ -1,0 +1,19 @@
+﻿@model bilir.Models.Service
+
+<section class="hero-service">
+    <div class="container">
+        <div class="hero-content">
+            <h1>@Model.Title</h1>
+            <p>@Model.Description</p>
+
+            <div class="hero-buttons">
+                <a href="tel:+@ViewBag.WhattsapPhone?.Replace(" ", "")" class="btn btn-call">
+                    <i class="fa-solid fa-phone"></i> Ara
+                </a>
+                <a href="https://wa.me/90@(@ViewBag.Phone?.Replace(" ", ""))" target="_blank" class="btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

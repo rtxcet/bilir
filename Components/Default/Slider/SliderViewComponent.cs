@@ -1,21 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace bilir.Components.Shared.Header
+namespace bilir.Components.Default
 {
-    public class HeaderViewComponent : ViewComponent
+    public class SliderViewComponent : ViewComponent
     {
         private readonly AppDbContext _context;
 
-        public HeaderViewComponent(AppDbContext context)
+        public SliderViewComponent(AppDbContext context)
         {
             _context = context;
         }
-
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var siteSettings = await _context.Homes.FirstOrDefaultAsync();
-            return View(siteSettings);
+            var sliders = await _context.Sliders.ToListAsync();
+            return View(sliders);
         }
     }
 }

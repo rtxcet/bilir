@@ -320,12 +320,14 @@ main .hero-service {
 
 
 /* Populer */
+
 .populer-section .card-slider {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
     -webkit-overflow-scrolling: touch;
+    padding-right:10px;
 }
 
 
@@ -341,7 +343,8 @@ main .hero-service {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Hafif geçiş efekti */
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    min-width: 320px;
+    width: 230px !important; /* kart kadar genişlesin */
+    height: 290px;
     display: block;
 }
 
@@ -354,9 +357,9 @@ main .hero-service {
 
 .populer-section .card-slider img {
     width: 100%; /* kart kadar genişlesin */
-    height: 250px;
     object-fit: cover; /* taşma yapmadan doldursun */
     display: block;
+    height:80% !important;
 }
 
 
@@ -366,10 +369,11 @@ main .hero-service {
 }
 
     .populer-section .card-body h5 {
-        color: #28a745;
+        color: #333333;
         padding: 0;
         margin-bottom: 8px;
-        font-size: 18px;
+        font-size: 16px;
+        opacity:0.7;
     }
 
     .populer-section .card-body i {
@@ -398,7 +402,7 @@ main .hero-service {
     }
 
         .populer-section .card img {
-            height: 200px;
+            height: 85% !important;
         }
 
     .populer-section .card-body h5 {

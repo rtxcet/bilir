@@ -21,59 +21,10 @@
     @await Component.InvokeAsync("Slogan")
 
     <header>
-        <div class="container">
-            <div class="top-bar">
-                <div class="logo">Bilir Teknoloji <img src="~/uploads/fav/fav.png" height="40" width="40" /></div>
-              
-
-                <div class="contact-info">
-                    
+        @await Component.InvokeAsync("Header")
 
 
-                    <a href="tel:05340219815" class="phone-number d-none d-md-inline">
-                        <i class="fas fa-phone-alt "></i>
-                        0534 021 98 15
-                    </a>
-
-
-                    <div class="mobil-navbar ">
-                        <button class="btn btn-outline-secondary" data-bs-toggle="offcanvas"
-                                data-bs-target="#mobileMenu">
-                            <i class="fa-solid fa-bars-staggered"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bottom-bar">
-                <div class="search-box">
-                    <form method="get" action="/products/search" class="d-flex" style="width: 100%;">
-                        <input type="text" name="q" placeholder="Aradığınız ürünü yazınız..." class="form-control me-2" />
-                        <button type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Mobil Sidebar -->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
-            <div class="offcanvas-header">
-                <a href="/" class="logo">Bilir Teknoloji</a>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="/" class="text-decoration-none active">Ana Sayfa</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
+        @await Component.InvokeAsync("Category")
     </header>
 
 
